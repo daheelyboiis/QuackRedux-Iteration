@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFeed } from '../../actions/postActions';
+import Logout from '../authorization/Logout.js'
 
 
 class Feed extends Component {
@@ -32,6 +33,7 @@ class Feed extends Component {
         <h1> POSTS GO HERE </h1>
         <h3>{this.props.auth.user.name} successfully Logged in!</h3>
         {allPosts}
+        <Logout />
       </div>
 
     )
