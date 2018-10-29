@@ -29,7 +29,7 @@ class Feed extends Component {
     }
     return (
       <div className="feed-container">
-      
+        <h1> POSTS GO HERE </h1>
         <h3>{this.props.auth.user.name} successfully Logged in!</h3>
         {allPosts}
       </div>
@@ -39,7 +39,7 @@ class Feed extends Component {
 };
 
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
   auth: state.auth,
   feed: state.feed
 });
