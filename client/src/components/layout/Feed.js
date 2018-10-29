@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getFeed } from '../../actions/postActions';
 import Logout from '../authorization/Logout.js'
 
+import Header from '../../header.js';
+
 
 class Feed extends Component {
   constructor() {
@@ -29,13 +31,15 @@ class Feed extends Component {
       allPosts.push(<div key={i} className="questionBox"> <i className="fas fa-arrow-up" key={i}></i> <strong> {likesCount} </strong><i className="fas fa-arrow-down" key={i}></i> <span className='question' key={i}>{posts[i].text}<br></br>{posts[i].tags}<br></br>{posts[i].name}<hr></hr></span></div>);
     }
     return (
-      <div className="feed-container">
-        <h1> POSTS GO HERE </h1>
-        <h3>{this.props.auth.user.name} successfully Logged in!</h3>
-        {allPosts}
-        <Logout />
-      </div>
+      <div>
+        <Header user={this.props.auth.user.name}/>
+        <div className="feed-container">
 
+          {/* <h3>{this.props.auth.user.name} successfully Logged in!</h3> */}
+          {allPosts}
+          <Logout />
+        </div>
+      </div>
     )
   }
 };

@@ -16,7 +16,7 @@ class Logout extends Component {
 
     return (
       <div>
-        <button onClick={() => this.props.logout()}><Link to='/'>Logout</Link></button>
+        <h3 onClick={() => this.props.logout()}><Link to='/'>Logout</Link></h3>
       </div>
     );
   }

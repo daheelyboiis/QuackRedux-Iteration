@@ -1,3 +1,7 @@
+* {
+  margin: 0px;
+}
+
 .App {
   text-align: center;
 }
@@ -37,10 +41,22 @@
   }
 }
 
-#login {
-  z-index: 11;
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(244, 226, 37);
+  height: 20px;
+  padding: 20px;
+  width: 100%;
 }
 
-#register {
-  z-index: 11;
+#title {
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 15px;
+  font-size: 35px;
+  justify-content: center;
+  display: inline-block;
+  background: rgb(244, 226, 37);
+  width: 100%;
 }
