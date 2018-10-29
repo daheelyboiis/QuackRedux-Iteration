@@ -21,6 +21,8 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
+import Header from '../../header.js';
+
 
 class Feed extends Component {
   constructor(props) {
@@ -51,18 +53,15 @@ class Feed extends Component {
     }
     console.log(allPosts, '------all Posts ----')
     return (
-      <div className="feed-container">
-        <h1> POSTS GO HERE </h1>
-        <h3>{this.props.auth.user.name} successfully Logged in!</h3>
-          <div>
-            {allPosts}
-            <Post
-            feed = {this.props.feed}
-            />
-          </div>
-        <Logout />
-      </div>
+      <div>
+        <Header user={this.props.auth.user.name}/>
+        <div className="feed-container">
 
+          {/* <h3>{this.props.auth.user.name} successfully Logged in!</h3> */}
+          {allPosts}
+          <Logout />
+        </div>
+      </div>
     )
   }
 };
