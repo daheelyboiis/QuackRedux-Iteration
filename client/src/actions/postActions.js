@@ -33,6 +33,35 @@ export const getPost = () => dispatch => {
     );
 };
 
+
+export const addPost = () => dispatch => {
+  let config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    }
+  }
+  axios
+    .post('/api/posts')
+    .then(res => dispatch({
+      type: types.ADD_POST,
+      payload: res.data
+    }))
+    .catch(err =>
+      dispatch({
+        type: types.ADD_POST,
+        payload: err.response.data
+      })
+    );
+};
+
+
+export const changeToggle = (e) => ({
+  type: types.CHANGE_TOGGLE,
+  payload: e,
+});
+
+
 export const upvote = (id, location) => {
   axios
     .post(`api/posts/like/${id}`)
@@ -55,3 +84,4 @@ export const downvote = (id, location) => {
       }
     }
 }
+
