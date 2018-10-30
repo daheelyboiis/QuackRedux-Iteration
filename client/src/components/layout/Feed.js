@@ -20,9 +20,18 @@ const mapDispatchToProps = dispatch => ({
   getPost: () => {
     dispatch(actions.getPost())
   },
+
   addPost: () => {
     dispatch(actions.addPost())
   },
+});
+
+  upvote: (id, location) => {
+    dispatch(actions.upvote(id, location))
+  },
+  downvote: (id, location) => {
+    dispatch(actions.downvote(id, location))
+  }
 });
 
 
@@ -42,6 +51,7 @@ class Feed extends Component {
     // console.log(this.props.feed, '----Feed----');
     let allPosts = [];
     let posts = this.props.feed;
+    console.log('posts', posts);
 
     for (let i = 0; i < posts.length; i++) {
       var likesCount = 0;
@@ -52,9 +62,10 @@ class Feed extends Component {
       let dateObject = new Date(Date.parse(date));
       let dateReadable = dateObject.toDateString();
       // We haven't placed dateReadable in the div yet (still working on layout UX), but it's ready to insert.
-      allPosts.push(<Post id={this.props.feed[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} />)
+      allPosts.push(<Post location={i} id={this.props.feed[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} upvote={this.props.upvote} downvote={this.props.downvote}/>)
     }
 
+    // console.log(allPosts, '------all Posts ----')
     return (
       <div>
         <Header user={this.props.auth.user.name}/>

@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
 // @desc    Get post by id
 // @access  Public
 router.get('/:id', (req, res) => {
-  Post.find(req.params.id)
+  Post.findOne({_id: req.params.id})
     .then(posts => res.json(posts))
     .catch(err => res.status(404).json({
       nopostfound: 'No post found with that ID'
@@ -80,7 +80,7 @@ router.post('/like/:id', passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
   User.findOne({
-      user: req.user.id
+      user: req.params.id
     })
     .then(user => {
       Post.findById(req.params.id)
