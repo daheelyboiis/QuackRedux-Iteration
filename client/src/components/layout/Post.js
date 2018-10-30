@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Post = (props) => {
   console.log(props, 'passed down to POST')
   return (
-    <div><Link to={`/posts/${props.id}`}>
+    <div><Link to={{pathname: '/ExpandedPost', state:{id: props.id}}}>
       <div className="questionBox">
       <i className="fas fa-arrow-up"></i>
       <strong> {props.likesCount} </strong>

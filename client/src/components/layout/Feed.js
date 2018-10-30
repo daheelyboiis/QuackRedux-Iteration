@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/postActions';
 import Logout from '../authorization/Logout.js';
 import Post from './Post';
-
+import Header from '../../header.js';
 
 
 const mapStateToProps = state => ({
@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-import Header from '../../header.js';
+
 
 
 class Feed extends Component {

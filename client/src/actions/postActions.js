@@ -17,13 +17,13 @@ export const getFeed = () => dispatch => {
     );
 };
 
-export const getPost = () => dispatch => {
+export const getPost = (id) => dispatch => {
   axios
-    .get('/api/posts/:id')
-    .then(res => dispatch({
+    .get(`/api/posts/${id}`)
+    .then(res => {dispatch({
       type: types.GET_POST,
       payload: res.data
-    }))
+    })})
     .catch(err =>
       dispatch({
         type: types.GET_POST,

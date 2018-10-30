@@ -13,6 +13,7 @@ import Login from './components/authorization/Login';
 import Splash from './components/layout/Splash';
 import SuccessReg from './components/layout/SuccessReg';
 import Feed from './components/layout/Feed';
+import ExpandedPost from './components/layout/ExpandedPost'
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -35,6 +36,7 @@ class App extends Component {
           <Route exact path="/successreg" component = {SuccessReg}/>
           <Route exact path="/feed" component = {Feed}/>
           <Route exact path="/login" component = {Login}/>
+          <Route exact path="/ExpandedPost" component = {ExpandedPost}/>
         </div>
       </Router>
       </Provider>
