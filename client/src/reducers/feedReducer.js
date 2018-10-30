@@ -3,6 +3,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   feed: [],
+  postInfo: {}
   // dataLoaded: false,
 };
 
