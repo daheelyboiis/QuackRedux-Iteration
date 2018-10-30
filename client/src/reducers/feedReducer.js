@@ -4,9 +4,12 @@ import * as types from '.././actions/types';
 const initialState = {
   feed: [],
 <<<<<<< HEAD
+<<<<<<< HEAD
   postInfo: {}
   // dataLoaded: false,
 =======
+=======
+>>>>>>> 5fe1f5dd8dbfc58a613a469332182b3e8d4eb2f0
   toggle: false,
 };
 
@@ -22,7 +25,10 @@ export default function(state = initialState, action) {
         feed,
       };
     }
+<<<<<<< HEAD
 >>>>>>> e41f8e6b655e2af15dbe7547f6bcfd3819e01e21
+=======
+>>>>>>> 5fe1f5dd8dbfc58a613a469332182b3e8d4eb2f0
 };
 
 export default function(state = initialState, action) {
