@@ -17,14 +17,12 @@ const Post = (props) => {
   // } 
 
   return (
-
-    <div><Link to={{pathname: '/ExpandedPost', state:{id: props.id}}}>
-
+    <div>
       <div className="questionBox">
       <button onClick={() => props.upvote(`${props.id}`, props.location)}><i className="fas fa-arrow-up" ></i></button>
       <strong> {props.likesCount} </strong>
       <button onClick={() => props.downvote(`${props.id}`, props.location)}><i className="fas fa-arrow-down" ></i></button>
-      <Link to={`/posts/${props.id}`}>
+      <Link to={{pathname: '/ExpandedPost', state:{id: props.id}}}>
       <span className='question'>{props.text}<br></br>{props.tags}<br></br>{props.name}<hr></hr></span>
       </Link>
       </div>
@@ -33,7 +31,6 @@ const Post = (props) => {
 };
 
 
-export default Post;
 
-
- // allPosts.push(<div key={i} className="questionBox"> <i className="fas fa-arrow-up" key={i}></i> <strong> {likesCount} </strong><i className="fas fa-arrow-down" key={i}></i> <span className='question' key={i}>{posts[i].text}<br></br>{posts[i].tags}<br></br>{posts[i].name}<hr></hr></span></div>)
+ export default Post;
+ 
