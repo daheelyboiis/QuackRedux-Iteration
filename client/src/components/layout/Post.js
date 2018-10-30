@@ -17,7 +17,9 @@ const Post = (props) => {
   // } 
 
   return (
-    <div>
+
+    <div><Link to={{pathname: '/ExpandedPost', state:{id: props.id}}}>
+
       <div className="questionBox">
       <button onClick={() => props.upvote(`${props.id}`, props.location)}><i className="fas fa-arrow-up" ></i></button>
       <strong> {props.likesCount} </strong>
