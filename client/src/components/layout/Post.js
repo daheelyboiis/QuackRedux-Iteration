@@ -37,6 +37,7 @@ const Post = (props) => {
 
   // } 
 
+<<<<<<< HEAD
 //   return (
 //     <div>
 //       <div className="questionBox">
@@ -50,6 +51,22 @@ const Post = (props) => {
 //     </div>
 //   );
       
+=======
+  return (
+
+    <div><Link to={{pathname: '/ExpandedPost', state:{id: props.id}}}>
+
+      <div className="questionBox">
+      <button onClick={() => props.upvote(`${props.id}`, props.location)}><i className="fas fa-arrow-up" ></i></button>
+      <strong> {props.likesCount} </strong>
+      <button onClick={() => props.downvote(`${props.id}`, props.location)}><i className="fas fa-arrow-down" ></i></button>
+      <Link to={`/posts/${props.id}`}>
+      <span className='question'>{props.text}<br></br>{props.tags}<br></br>{props.name}<hr></hr></span>
+      </Link>
+      </div>
+    </div>
+  );
+>>>>>>> 91db45347cebe2ac9d94ae4a334c3b124f9ea468
 };
 
 
