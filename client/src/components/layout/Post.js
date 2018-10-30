@@ -1,25 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import * as actions from '../../actions/postActions';
 
 
 
 const Post = (props) => {
-  console.log(props, 'passed down to POST')
+  console.log(props.feed.feed, 'passed down to POST')
   return (
-    <div><Link to={`/posts/${props.id}`}>
-      <div className="questionBox">
-      <i className="fas fa-arrow-up"></i>
-      <strong> {props.likesCount} </strong>
-      <i className="fas fa-arrow-down" ></i>
-      <span className='question'>{props.text}<br></br>{props.tags}<br></br>{props.name}<hr></hr></span>
-      </div>
-      </Link>
-      </div>
+    <div>
+      {props.feed.feed.map((post)=> {
+        return (
+          <div className="questionBox" key={post._id}>
+          <ul className='question' key={post._id}>
+          <li> {post.text}</li> </ul>
+          <br></br>
+          {post.tags}
+          <br></br>
+          {post.name}
+          <i className="fas fa-arrow-up"></i>
+          <strong> {props.likesCount} </strong>
+          <i className="fas fa-arrow-down"></i>
+          <hr></hr>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
 export default Post;
 
-
- // allPosts.push(<div key={i} className="questionBox"> <i className="fas fa-arrow-up" key={i}></i> <strong> {likesCount} </strong><i className="fas fa-arrow-down" key={i}></i> <span className='question' key={i}>{posts[i].text}<br></br>{posts[i].tags}<br></br>{posts[i].name}<hr></hr></span></div>)
