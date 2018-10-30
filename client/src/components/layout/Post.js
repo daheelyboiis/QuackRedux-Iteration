@@ -1,23 +1,35 @@
 import React from 'react';
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 
 
 const Post = (props) => {
-  console.log(props, 'passed down to POST')
+  // console.log(props, 'passed down to POST')
+  // let expanded = false;
+  // if(expanded) {
+  //   return (
+  //     <div>'
+  //       <ExpandedPost asdfasgas/>
+  //     </div>
+  //   )
+
+  // } 
+
   return (
-    <div><Link to={`/posts/${props.id}`}>
+    <div>
       <div className="questionBox">
-      <i className="fas fa-arrow-up"></i>
+      <button onClick={() => props.upvote(`${props.id}`, props.location)}><i className="fas fa-arrow-up" ></i></button>
       <strong> {props.likesCount} </strong>
-      <i className="fas fa-arrow-down" ></i>
+      <button onClick={() => props.downvote(`${props.id}`, props.location)}><i className="fas fa-arrow-down" ></i></button>
+      <Link to={`/posts/${props.id}`}>
       <span className='question'>{props.text}<br></br>{props.tags}<br></br>{props.name}<hr></hr></span>
-      </div>
       </Link>
       </div>
+    </div>
   );
-}
+};
+
 
 export default Post;
 
