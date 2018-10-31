@@ -12,7 +12,7 @@ import PostButtonForm from './postButtonForm';
 const mapStateToProps = state => ({
   state: state,
   auth: state.auth,
-  feed: state.feed
+  feed: state.feed.feed
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -31,6 +31,9 @@ const mapDispatchToProps = dispatch => ({
   addPost: (input) => {
     dispatch(actions.addPost(input))
   },
+  deletePost: (id, location) => {
+    dispatch(actions.deletePost(id, location))
+  }
   // changePostText: () => {
   //   dispatch(actions.changePostText())
   // }
@@ -50,11 +53,9 @@ class Feed extends Component {
 
 
   render() {
-    console.log(this.props.state, '----AllState----');
     let allPosts = [];
     let posts = this.props.feed;
     console.log('posts', posts);
-    console.log(this.props.auth, '----this is state-----');
 
 
     for (let i = 0; i < posts.length; i++) {
@@ -66,20 +67,22 @@ class Feed extends Component {
       let dateObject = new Date(Date.parse(date));
       let dateReadable = dateObject.toDateString();
       // We haven't placed dateReadable in the div yet (still working on layout UX), but it's ready to insert.
-      allPosts.push(<Post location={i} id={this.props.feed[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} upvote={this.props.upvote} downvote={this.props.downvote}/>)
+      allPosts.push(<Post location={i} id={posts[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} upvote={this.props.upvote} downvote={this.props.downvote} deletePost = {this.props.deletePost}/>)
     }
     // console.log(allPosts, '------all Posts ----')
     return (
       <div>
         <Header user={this.props.auth.user.name}/>
+        <br></br>
+        <PostButtonForm
+            addPost = {this.props.addPost}
+        />
+        <br></br>
         <div className="feed-container">
 
           {/* <h3>{this.props.auth.user.name} successfully Logged in!</h3> */}
           {allPosts}
 
-          <PostButtonForm
-            addPost = {this.props.addPost}
-          />
           <Logout />
         </div>
       </div>

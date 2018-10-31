@@ -5,11 +5,10 @@ import * as types from './types';
 export const getFeed = () => dispatch => {
   axios
     .get('/api/posts')
-    .then(res => {console.log(res)
-    dispatch({
+    .then(res => dispatch({
       type: types.GET_FEED,
       payload: res.data
-    })})
+    }))
     .catch(err =>
       dispatch({
         type: types.GET_FEED,
@@ -25,12 +24,12 @@ export const getPost = (id) => dispatch => {
       type: types.GET_POST,
       payload: res.data
     })})
-    .catch(err =>
+    .catch(err => { console.log('err.response',err.response)
       dispatch({
         type: types.GET_POST,
         payload: err.response.data
       })
-    );
+    });
 };
 
 export const addPost = (input) => dispatch => {
@@ -61,6 +60,23 @@ export const changePostText = (text) => {
   }
 };
 
+export const deletePost = (id, location) => dispatch => {
+  let config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    },
+  }
+
+  axios
+    .delete(`/api/posts/${id}`, config)
+    .then(res => dispatch({
+      type: types.DELETE_POST,
+      payload: res.data
+    }))
+    .catch(err => alert("Cannot delete other user's post"))
+}
+
 
 export const upvote = (id, location) => {
   axios
@@ -84,6 +100,7 @@ export const downvote = (id, location) => {
       }
     }
 }
+
 
 export const addComment = (input, id) => dispatch => {
   console.log(input, "this is the input", id, " this is the ID")
@@ -109,5 +126,19 @@ export const addComment = (input, id) => dispatch => {
     })))
     .catch(err => console.log(err))
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

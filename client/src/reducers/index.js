@@ -9,6 +9,10 @@ export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   feed: feedReducer,
+
   post: postReducer,
   comment: commentReducer,
+
+
+
 });

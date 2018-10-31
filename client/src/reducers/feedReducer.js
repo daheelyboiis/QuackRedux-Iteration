@@ -3,42 +3,52 @@ import * as types from '../actions/types';
 
 const initialState = {
   feed: [],
+  selectedPost: {},
   text: ''
   // dataLoaded: false,
 };
 
 export default function(state = initialState, action) {
   console.log('state', state);
-  let newState = Object.assign([], state);
+  let newState = Object.assign({}, state);
   console.log('newState',newState);
-  let feed = state.feed;
+  let feed = state.feed.slice();
   let text = state.text;
 
   switch (action.type) {
     case types.GET_FEED:
-      // console.log('getFeed', action.payload);
-      // newState.feed = action.payload;
-      // console.log(newState);
-      return action.payload;
+      console.log('getfeedpayload', newState)
+      newState.feed = action.payload;
+      return newState;
 
     case types.GET_POST:
-      return action.payload
+      newState.selectedPost = action.payload;
+      return newState;
 
     case types.UPVOTE:
-        // console.log('newstate', newState);
-        // console.log(action.payload);
-        // newState[action.payload.key].likes
-        newState[action.payload.location].likes.push({temporary: 'object'});
-        // console.log(newState[0]);
+      if(!newState.feed[action.payload.location].liked) {
+        newState.feed[action.payload.location].likes.push({temporary: 'object'});
+        newState.feed[action.payload.location].liked = true;
+      }
+
       return newState;
 
     case types.DOWNVOTE:
-      newState[action.payload.location].likes.pop();
+    if(newState.feed[action.payload.location].liked) newState.feed[action.payload.location].liked = false;
+      newState.feed[action.payload.location].likes.pop();
       return newState;
 
     case types.ADD_POST: {
       console.log(action.payload, '-----payload-----')
-      feed.shift(action.payload)
+      feed.unshift(action.payload)
+      return {
+        ...state,
+        feed
+      }
+    }
+
+    case types.DELETE_POST: {
+      feed.splice(action.payload.location, 1);
       return {
         ...state,
         feed
