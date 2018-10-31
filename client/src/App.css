@@ -60,3 +60,10 @@
   background: rgb(244, 226, 37);
   width: 100%;
 }
+
+#searchTxt {
+  border: 1px solid black;
+  width: 150px;
+  display: inline-block;
+}
+
