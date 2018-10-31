@@ -60,6 +60,23 @@ export const changePostText = (text) => {
   }
 };
 
+export const deletePost = (id, location) => dispatch => {
+  let config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    },
+  }
+
+  axios
+    .delete(`/api/posts/${id}`, config)
+    .then(res => dispatch({
+      type: types.DELETE_POST,
+      payload: res.data
+    }))
+    .catch(err => alert("Cannot delete other user's post"))
+}
+
 
 export const upvote = (id, location) => {
   axios
@@ -83,3 +100,45 @@ export const downvote = (id, location) => {
       }
     }
 }
+
+
+export const addComment = (input, id) => dispatch => {
+  console.log(input, "this is the input", id, " this is the ID")
+  let config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    },
+  }
+
+  let text = {
+    text: input
+  }
+
+  axios
+    .post(`/api/posts/comment/${id}`, text, config)
+    .then(res => 
+      console.log(res)
+      .then(
+      dispatch({
+      type: types.ADD_COMMENT,
+      payload: res.data
+    })))
+    .catch(err => console.log(err))
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
