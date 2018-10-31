@@ -84,3 +84,26 @@ export const downvote = (id, location) => {
       }
     }
 }
+
+export const addComment = (input, id) => dispatch => {
+  let config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    },
+  }
+
+  let text = {
+    text: input
+  }
+
+  axios
+    .post(`/api/posts/comment/${id}`, text, config)
+    .then(res => dispatch({
+      type: types.ADD_COMMENT,
+      payload: res.data
+    }))
+    .catch(err => console.log(err))
+};
+
+
