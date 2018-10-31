@@ -58,11 +58,9 @@ class ExpandedPost extends Component {
       style={styles.container} 
       className="expandedpost"
       >
-        {theText} 
+        <strong>{theText} </strong>
       </div>
-      <div
-      style={styles.container}
-      >
+      <div>
         {commentsArr}
       </div>
         <CreateComment id={theID} addComment={this.props.addComment} />

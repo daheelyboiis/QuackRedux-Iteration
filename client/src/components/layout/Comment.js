@@ -18,14 +18,21 @@ const Comment = (props) => {
 
   return (
     <div>
-        {props.comment.text}
+    <div style={styles.container}>
+       <span className='question'> {props.comment.text}</span>
+    </div>
     </div>
   );
 };
 
 const styles = {
-
-}
+  container: {
+    border: '1px solid black',
+    height: 100,
+    width: '100%',
+    flex: 1,
+  },
+};
 
 
  export default Comment;

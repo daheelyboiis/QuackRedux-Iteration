@@ -118,12 +118,10 @@ export const addComment = (input, id) => dispatch => {
   axios
     .post(`/api/posts/comment/${id}`, text, config)
     .then(res => 
-      console.log(res)
-      .then(
       dispatch({
       type: types.ADD_COMMENT,
       payload: res.data
-    })))
+    }))
     .catch(err => console.log(err))
 };
 
