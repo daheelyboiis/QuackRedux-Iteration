@@ -12,7 +12,7 @@ export default function(state = initialState, action) {
   console.log('state', state);
   let newState = Object.assign({}, state);
   console.log('newState',newState);
-  let feed = state.feed;
+  let feed = state.feed.slice();
   let text = state.text;
 
   switch (action.type) {
@@ -41,6 +41,14 @@ export default function(state = initialState, action) {
     case types.ADD_POST: {
       console.log(action.payload, '-----payload-----')
       feed.unshift(action.payload)
+      return {
+        ...state,
+        feed
+      }
+    }
+
+    case types.DELETE_POST: {
+      feed.splice(action.payload.location, 1);
       return {
         ...state,
         feed

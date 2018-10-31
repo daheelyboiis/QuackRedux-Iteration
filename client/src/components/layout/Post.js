@@ -13,7 +13,7 @@ const Post = (props) => {
   //       <ExpandedPost />
   //     </div>
   //   )
-  // } 
+  // }
 
   return (
     <div>
@@ -22,8 +22,10 @@ const Post = (props) => {
       <strong> {props.likesCount} </strong>
       <button onClick={() => props.downvote(`${props.id}`, props.location)}><i className="fas fa-arrow-down" ></i></button>
       <Link to={{pathname: '/ExpandedPost', state:{id: props.id}}}>
-      <span className='question'>{props.text}<br></br>{props.tags}<br></br>{props.name}<hr></hr></span>
+      <span className='question'>{props.text}<br></br>{props.tags}
+      <br></br>{props.name}<hr></hr></span>
       </Link>
+      <button onClick = {() => props.deletePost(`${props.id}`, props.location)}> <i className="fas fa-trash-alt"></i> </button>
       </div>
     </div>
   );
@@ -32,4 +34,4 @@ const Post = (props) => {
 
 
  export default Post;
- 
+
