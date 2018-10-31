@@ -25,6 +25,9 @@ const Post = (props) => {
       <span className='question'>{props.text}<br></br>{props.tags}
       <br></br>{props.name}</span>
       </Link>
+      <Link to={{pathname: '/ExpandedPost', state:{id: props.id}}}>
+      <p> Comments: {props.numOfComments}</p>
+      </Link>
       <button onClick = {() => props.deletePost(`${props.id}`, props.location)}> <i className="fas fa-trash-alt"></i> </button>
       <hr></hr>
       </div>
