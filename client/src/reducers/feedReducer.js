@@ -3,15 +3,13 @@ import * as types from '../actions/types';
 
 const initialState = {
   feed: [],
-  selectedPost: {},
+  selectedPost: null,
   text: ''
   // dataLoaded: false,
 };
 
 export default function(state = initialState, action) {
-  console.log('state', state);
   let newState = Object.assign({}, state);
-  console.log('newState',newState);
   let feed = state.feed.slice();
   let text = state.text;
 
@@ -22,9 +20,8 @@ export default function(state = initialState, action) {
       return newState;
 
     case types.GET_POST:
-
-      newState.selectedPost = action.payload;
       
+      newState.selectedPost = action.payload[0];
       return newState;
 
     case types.UPVOTE:
@@ -57,16 +54,22 @@ export default function(state = initialState, action) {
       }
     }
 
-    case types.CHANGE_POST_TEXT: {
+    case types.CHANGE_POST_TEXT:
       console.log(state, '----state---')
       text += action.payload;
       return{
         ...state,
         text
       }
-    }
 
-    default:
-      return state;
+    case types.ADD_COMMENT:
+
+        console.log('newState', newState);
+        newState.selectedPost = action.payload;
+
+        return newState;
+  
+      default:
+        return state;
   }
 };
