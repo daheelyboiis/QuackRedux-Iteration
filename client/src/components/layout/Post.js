@@ -10,10 +10,9 @@ const Post = (props) => {
   // if(expanded) {
   //   return (
   //     <div>'
-  //       <ExpandedPost asdfasgas/>
+  //       <ExpandedPost />
   //     </div>
   //   )
-
   // } 
 
   return (
