@@ -119,6 +119,7 @@ export const addComment = (input, id) => dispatch => {
     .post(`/api/posts/comment/${id}`, text, config)
     .then(res => 
       dispatch({
+
       type: types.ADD_COMMENT,
       payload: res.data
     }))

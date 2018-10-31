@@ -6,7 +6,7 @@ import Logout from '../authorization/Logout.js';
 import Post from './Post';
 import Header from '../../header.js';
 import PostButtonForm from './postButtonForm';
-
+import { Link } from 'react-router-dom'
 
 
 const mapStateToProps = state => ({
@@ -67,7 +67,7 @@ class Feed extends Component {
       let dateObject = new Date(Date.parse(date));
       let dateReadable = dateObject.toDateString();
       // We haven't placed dateReadable in the div yet (still working on layout UX), but it's ready to insert.
-      allPosts.push(<Post location={i} id={posts[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} upvote={this.props.upvote} downvote={this.props.downvote} deletePost = {this.props.deletePost}/>)
+      allPosts.push(<Post location={i} id={posts[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} upvote={this.props.upvote} downvote={this.props.downvote} deletePost = {this.props.deletePost} numOfComments = {posts[i].comments.length}/>)
     }
     // console.log(allPosts, '------all Posts ----')
     return (

@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
     auth: state.auth,
     post: state.feed.selectedPost,
   });
-  
+
   const mapDispatchToProps = dispatch => ({
     getPost: (id) => {
       dispatch(actions.getPost(id))
@@ -23,21 +23,21 @@ const mapStateToProps = state => ({
       dispatch(actions.addComment(input, id))
     }
   });
-  
+
 
 class ExpandedPost extends Component {
     // put render logic here
     constructor(props){
         super(props)
     }
-    
-    
+
+
     componentWillMount(){
         // console.log(this.props, '------the props------');
-        this.props.getPost(this.props.location.state.id);    
+        this.props.getPost(this.props.location.state.id);
     }
 
-    
+
 
     render (){
         console.log('here we are', this.props.post)
@@ -46,26 +46,28 @@ class ExpandedPost extends Component {
         let commentsArr = [];
         let theID = this.props.post == undefined ? '' : this.props.post._id;
         console.log(theID, 'This is the ID')
-        
+
         for(let i = 0; i < theComments.length; i++){
           commentsArr.push(<Comment key={i} comment={theComments[i]}/>)
         }
         return(
-          
+
           <div>
             <Header user={this.props.auth.user.name}/>
-      <div 
-      style={styles.container} 
+      <div
+      style={styles.container}
       className="expandedpost"
       >
+
         <strong>{theText} </strong>
+
       </div>
       <div>
         {commentsArr}
       </div>
         <CreateComment id={theID} addComment={this.props.addComment} />
       </div>
-      
+
       )
     };
   }
