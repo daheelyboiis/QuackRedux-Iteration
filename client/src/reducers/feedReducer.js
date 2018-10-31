@@ -22,7 +22,9 @@ export default function(state = initialState, action) {
       return newState;
 
     case types.GET_POST:
+
       newState.selectedPost = action.payload;
+      
       return newState;
 
     case types.UPVOTE:
