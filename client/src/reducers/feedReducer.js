@@ -3,8 +3,8 @@ import * as types from '../actions/types';
 
 const initialState = {
   feed: [],
-  selectedPost: {},
-  text: ''
+  selectedPost: null,
+  text: '',
   // dataLoaded: false,
 };
 
@@ -22,7 +22,8 @@ export default function(state = initialState, action) {
       return newState;
 
     case types.GET_POST:
-      newState.selectedPost = action.payload;
+      console.log(action.payload, "action payload")
+      newState.selectedPost = action.payload[0];
       return newState;
 
     case types.UPVOTE:
@@ -62,6 +63,14 @@ export default function(state = initialState, action) {
         ...state,
         text
       }
+    }
+
+    case types.ADD_COMMENT: {
+
+      
+      newState.selectedPost = action.payload;
+
+      return newState;
     }
 
     default:

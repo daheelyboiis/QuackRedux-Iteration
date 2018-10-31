@@ -12,7 +12,7 @@ import Comment from './Comment';
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    post: state.post,
+    post: state.feed.selectedPost,
   });
 
   const mapDispatchToProps = dispatch => ({
@@ -41,10 +41,10 @@ class ExpandedPost extends Component {
 
     render (){
         console.log('here we are', this.props.post)
-        let theText = this.props.post[0] == undefined ? '' : this.props.post[0].text
-        let theComments = this.props.post[0] == undefined ? '' : this.props.post[0].comments
+        let theText = this.props.post == undefined ? '' : this.props.post.text
+        let theComments = this.props.post == undefined ? '' : this.props.post.comments
         let commentsArr = [];
-        let theID = this.props.post[0] == undefined ? '' : this.props.post[0]._id;
+        let theID = this.props.post == undefined ? '' : this.props.post._id;
         console.log(theID, 'This is the ID')
 
         for(let i = 0; i < theComments.length; i++){
@@ -58,11 +58,11 @@ class ExpandedPost extends Component {
       style={styles.container}
       className="expandedpost"
       >
-        {theText}
+
+        <strong>{theText} </strong>
+
       </div>
-      <div
-      style={styles.container}
-      >
+      <div>
         {commentsArr}
       </div>
         <CreateComment id={theID} addComment={this.props.addComment} />
