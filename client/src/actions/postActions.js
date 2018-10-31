@@ -5,11 +5,10 @@ import * as types from './types';
 export const getFeed = () => dispatch => {
   axios
     .get('/api/posts')
-    .then(res => {console.log(res)
-    dispatch({
+    .then(res => dispatch({
       type: types.GET_FEED,
       payload: res.data
-    })})
+    }))
     .catch(err =>
       dispatch({
         type: types.GET_FEED,
