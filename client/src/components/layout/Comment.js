@@ -28,8 +28,7 @@ const Comment = (props) => {
 const styles = {
   container: {
     border: '1px solid black',
-    height: 100,
-    width: '100%',
+    padding:10,
     flex: 1,
   },
 };

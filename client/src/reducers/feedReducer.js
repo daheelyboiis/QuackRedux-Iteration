@@ -3,7 +3,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   feed: [],
-  selectedPost: {},
+  selectedPost: null,
   text: '',
   // dataLoaded: false,
 };
@@ -21,10 +21,10 @@ export default function(state = initialState, action) {
       newState.feed = action.payload;
       return newState;
 
-    // case types.GET_POST:
-    //   console.log(action.payload[0], "action payload")
-    //   newState.selectedPost = action.payload;
-    //   return newState;
+    case types.GET_POST:
+      console.log(action.payload, "action payload")
+      newState.selectedPost = action.payload[0];
+      return newState;
 
     case types.UPVOTE:
       if(!newState.feed[action.payload.location].liked) {
@@ -65,17 +65,13 @@ export default function(state = initialState, action) {
       }
     }
 
-    // case types.ADD_COMMENT: {
-    //   let selectedPost = Object.assign({}, state.selectedPost)
-    //   console.log(action.payload)
-    //   console.log(selectedPost);
-    //   selectedPost = action.payload;
+    case types.ADD_COMMENT: {
 
-    //   return{
-    //     ...state,
-    //     selectedPost
-    //   }
-    // }
+      
+      newState.selectedPost = action.payload;
+
+      return newState;
+    }
 
     default:
       return state;
