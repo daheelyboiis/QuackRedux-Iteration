@@ -60,6 +60,27 @@ export const changePostText = (text) => {
   }
 };
 
+export const deletePost = (id, location) => dispatch => {
+  let config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    },
+  }
+  let del = {
+    id: id,
+    location: location
+  }
+
+  axios
+    .delete(`/api/posts/${id}`, del, config)
+    .then(res => dispatch({
+      type: types.DELETE_POST,
+      payload: res.data
+    }))
+    .catch(err => console.log(err))
+}
+
 
 export const upvote = (id, location) => {
   axios
@@ -83,3 +104,18 @@ export const downvote = (id, location) => {
       }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

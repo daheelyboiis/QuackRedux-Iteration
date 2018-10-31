@@ -31,6 +31,9 @@ const mapDispatchToProps = dispatch => ({
   addPost: (input) => {
     dispatch(actions.addPost(input))
   },
+  deletePost: (id, location) => {
+    dispatch(actions.deletePost(id, location))
+  }
   // changePostText: () => {
   //   dispatch(actions.changePostText())
   // }
@@ -64,7 +67,7 @@ class Feed extends Component {
       let dateObject = new Date(Date.parse(date));
       let dateReadable = dateObject.toDateString();
       // We haven't placed dateReadable in the div yet (still working on layout UX), but it's ready to insert.
-      allPosts.push(<Post location={i} id={posts[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} upvote={this.props.upvote} downvote={this.props.downvote}/>)
+      allPosts.push(<Post location={i} id={posts[i]._id} likesCount={likesCount} text={posts[i].text} tags={posts[i].tags} name={posts[i].name} upvote={this.props.upvote} downvote={this.props.downvote} deletePost = {this.props.deletePost}/>)
     }
     // console.log(allPosts, '------all Posts ----')
     return (
