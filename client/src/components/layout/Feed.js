@@ -73,14 +73,16 @@ class Feed extends Component {
     return (
       <div>
         <Header user={this.props.auth.user.name}/>
+        <br></br>
+        <PostButtonForm
+            addPost = {this.props.addPost}
+        />
+        <br></br>
         <div className="feed-container">
 
           {/* <h3>{this.props.auth.user.name} successfully Logged in!</h3> */}
           {allPosts}
 
-          <PostButtonForm
-            addPost = {this.props.addPost}
-          />
           <Logout />
         </div>
       </div>

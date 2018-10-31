@@ -67,18 +67,14 @@ export const deletePost = (id, location) => dispatch => {
       'Authorization': localStorage['jwtToken']
     },
   }
-  let del = {
-    id: id,
-    location: location
-  }
 
   axios
-    .delete(`/api/posts/${id}`, del, config)
+    .delete(`/api/posts/${id}`, config)
     .then(res => dispatch({
       type: types.DELETE_POST,
       payload: res.data
     }))
-    .catch(err => console.log(err))
+    .catch(err => alert("Cannot delete other user's post"))
 }
 
 
