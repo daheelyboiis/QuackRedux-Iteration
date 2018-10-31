@@ -86,6 +86,7 @@ export const downvote = (id, location) => {
 }
 
 export const addComment = (input, id) => dispatch => {
+  console.log(input, "this is the input", id, " this is the ID")
   let config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -99,10 +100,13 @@ export const addComment = (input, id) => dispatch => {
 
   axios
     .post(`/api/posts/comment/${id}`, text, config)
-    .then(res => dispatch({
+    .then(res => 
+      console.log(res)
+      .then(
+      dispatch({
       type: types.ADD_COMMENT,
       payload: res.data
-    }))
+    })))
     .catch(err => console.log(err))
 };
 
