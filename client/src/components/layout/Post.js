@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import * as actions from '../../actions/postActions';
+// import { connect } from 'react-redux'
+// import * as actions from '../../actions/postActions';
 import { Link } from 'react-router-dom';
 
 
