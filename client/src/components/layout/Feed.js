@@ -5,10 +5,12 @@ import * as actions from '../../actions/postActions';
 import Logout from '../authorization/Logout.js';
 import Post from './Post';
 import Header from '../../header.js';
+import PostButtonForm from './postButtonForm';
 
 
 
 const mapStateToProps = state => ({
+  state: state,
   auth: state.auth,
   feed: state.feed
 });
@@ -25,7 +27,13 @@ const mapDispatchToProps = dispatch => ({
   },
   downvote: (id, location) => {
     dispatch(actions.downvote(id, location))
-  }
+  },
+  addPost: (input) => {
+    dispatch(actions.addPost(input))
+  },
+  // changePostText: () => {
+  //   dispatch(actions.changePostText())
+  // }
 });
 
 
@@ -42,10 +50,11 @@ class Feed extends Component {
 
 
   render() {
-    // console.log(this.props.feed, '----Feed----');
+    console.log(this.props.state, '----AllState----');
     let allPosts = [];
     let posts = this.props.feed;
     console.log('posts', posts);
+    console.log(this.props.auth, '----this is state-----');
 
 
     for (let i = 0; i < posts.length; i++) {
@@ -67,6 +76,10 @@ class Feed extends Component {
 
           {/* <h3>{this.props.auth.user.name} successfully Logged in!</h3> */}
           {allPosts}
+
+          <PostButtonForm
+            addPost = {this.props.addPost}
+          />
           <Logout />
         </div>
       </div>
