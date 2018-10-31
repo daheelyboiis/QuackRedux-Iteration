@@ -153,8 +153,12 @@ router.post(
 router.post('/', passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
-  console.log(req.body, 'YO------this req.body')
+
+console.log('did we get here?')
+console.log(req.body, '1----request----')
+
   req.body = JSON.parse(Object.keys(req.body)[0]);
+console.log(req.body, '2----request----')
   const {
     errors,
     isValid
