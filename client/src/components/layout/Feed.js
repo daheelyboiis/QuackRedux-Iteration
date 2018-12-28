@@ -74,9 +74,12 @@ class Feed extends Component {
       <div>
         <Header user={this.props.auth.user.name}/>
         <br></br>
+        <div classname="addpostdiv">
         <PostButtonForm
             addPost = {this.props.addPost}
         />
+        </div>
+        <hr></hr>
         <br></br>
         <div className="feed-container">
 

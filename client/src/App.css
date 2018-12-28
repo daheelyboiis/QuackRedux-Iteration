@@ -67,16 +67,13 @@
   display: inline-block;
 }
 
-#postbox {
-  border: 1px solid black;
-  padding: 10px;
+.postbutton {
+background-color: steelblue;
 }
 
-#commentbox {
-  border: 1px solid black;
-  padding: 10px;
+.addpostdiv {
+ background-color: steelblue;
 }
-
 
 
 
